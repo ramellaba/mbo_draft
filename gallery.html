@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mudbyolivia | Gallery</title>
+    <style>
+        /* Add the same styles as in index.html or link an external stylesheet if you create one */
+        /* Reset default margin and padding of web page */
+        /* Will help the background color of h1 to reach the full width and top edge of web page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styling for the header */
+        header {
+            background-color: black;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styling for the header text */
+        header h1 {
+            color: white;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        /* Style for nav bar */
+        nav {
+            background-color: white;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style for nav links */
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        /* Style for hovering the nav buttons */
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Same styles as before */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-container img {
+            width: 200px;
+            margin: 10px;
+        }
+
+        /* Modal background */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            /* Ensures it overlays other content */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Semi-transparent black background */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Close button styling */
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Modal image styling */
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        /* Next and previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            padding: 16px;
+            margin-top: -22px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>mudbyolivia</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Gallery Container -->
+    <div class="gallery-container" id="gallery-container">
+        <!-- Images will be dynamically inserted here -->
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+        <span id="close" class="close">&times;</span>
+        <img id="modal-image" class="modal-content">
+        <span id="prev" class="prev">&#10094;</span>
+        <span id="next" class="next">&#10095;</span>
+    </div>
+
+    <script>
+        // Fetch the JSON file and display the images
+        fetch('galleryimagesdisplay.json')
+            .then(response => response.json())
+            .then(images => {
+                const galleryContainer = document.getElementById('gallery-container');
+    
+                images.forEach(image => {
+                    const img = document.createElement('img');
+                    img.src = `images/artwork/${image}`; // Adjust the path if necessary
+                    img.alt = image;
+                    galleryContainer.appendChild(img);
+    
+                    // Add click event to open modal for each image
+                    img.addEventListener('click', openModal);
+                });
+            })
+            .catch(error => console.error('Error loading images:', error));
+    
+        // Get modal elements
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+        const closeBtn = document.getElementById('close');
+    
+        // Function to open modal and display the clicked image
+        function openModal(event) {
+            modal.style.display = "flex";
+            modalImage.src = event.target.src;
+        }
+    
+        // Function to close the modal
+        function closeModal() {
+            modal.style.display = "none";
+        }
+    
+        // Close the modal when clicking the close button or outside the image
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
+    
+    
+    
+
+</body>
+
+</html>

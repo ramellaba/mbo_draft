@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mudbyolivia | Home</title>
+    <link rel="icon" type="image/png" href="/images/logo/O.png">
+    <style>
+        /* Reset default margin and padding of web page */
+        /* Will help the background color of h1 to reach the full width and top edge of web page */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Styling for the header */
+        header {
+            background-color: black;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Styling for the header text */
+        header h1 {
+            color: white;
+            font-size: 20px;
+            margin: 0;
+        }
+
+        /* Style for nav bar */
+        nav {
+            background-color: white;
+            width: 100%;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Style for nav links */
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        /* Style for hovering the nav buttons */
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /*Style for main container */
+        .content-container {
+            display: flex;
+            width: 100%;
+            padding: 0 20px;
+            margin-top: 20px; /* Spacing from navigation bar */
+            align-items: center;
+        }
+
+        /* Paragraph styling */
+        .content-container .text {
+            width: 33.33%;
+            padding: 20px;
+        }
+
+        /* Image styling */
+        .content-container .image {
+            width: 66.67%;
+        }
+
+        .content-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        /* Place rest of paragraph on new line */
+        .text p span {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>mudbyolivia</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+
+ <!-- Content Container -->
+ <div class="content-container">
+    <!-- Paragraph Section -->
+    <div class="text">
+      <p>
+        "From humble mud,<span>we shape the pieces of art that carry the warmth 
+        of our hands and the spirit of the earth."</span>
+      </p>
+    </div>
+    
+    <!-- Image Section -->
+    <div class="image">
+      <img src="/images/collage/gallerycollage.png" alt="Featured Gallery">
+    </div>
+  </div>
+
+</body>
+
+</html>
